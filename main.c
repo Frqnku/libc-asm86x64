@@ -13,17 +13,35 @@ ssize_t ft_read(int fd, void *buf, size_t count);
 
 int main(void)
 {
-    char copy[100];
-    char buffer[100];
+    char copy_asm[100];
+    char copy_c[100];
+    char buffer_asm[100];
+    char buffer_c[100];
     //char *dup;
-    printf("ft_strlen: %zu\n", ft_strlen("Hello"));
-    ft_strcpy(copy, "Hello World!");
-    printf("ft_strcpy: %s\n", copy);
-    printf("ft_strcmp: %d\n", ft_strcmp("abc", "abc"));
-    ft_write(1, "ft_write: Hello!\n", 17);
-    ft_read(0, buffer, 10);
-    buffer[10] = '\0';
-    printf("ft_read: %s", buffer);
+
+    printf("asm ft_strlen: %zu\n", ft_strlen("Hello"));
+    printf("c strlen: %zu\n", strlen("Hello"));
+
+    ft_strcpy(copy_asm, "Hello World!");
+    printf("ft_strcpy: %s\n", copy_asm);
+
+    ft_strcpy(copy_c, "Hello World!");
+    printf("ft_strcpy: %s\n", copy_c);
+
+    printf("asm ft_strcmp: %d\n", ft_strcmp("abc", "abc"));
+    printf("c strcmp: %d\n", strcmp("abc", "abc"));
+
+    ft_write(1, "asm ft_write: Hello!\n", 21);
+    write(1, "c write: Hello!\n", 16);
+
+    ft_read(0, buffer_asm, 10);
+    buffer_asm[10] = '\0';
+    printf("asm ft_read: %s", buffer_asm);
+
+    read(0, buffer_c, 10);
+    buffer_c[10] = '\0';
+    printf("c read: %s", buffer_c);
+
     // dup = ft_strdup("Duplicate me!");
     // printf("ft_strdup: %s\n", dup);
     // free(dup);

@@ -29,6 +29,6 @@ fclean: clean
 re: fclean all
 
 main:
-	gcc -Werror -Wextra -Wall main.c libasm.a -o libasm
+	gcc -Werror -Wextra -Wall main.c libasm.a -L. -lasm -o libasm
 
 .PHONY: all clean fclean re
