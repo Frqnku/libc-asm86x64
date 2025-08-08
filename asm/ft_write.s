@@ -1,18 +1,24 @@
+extern __errno_location
+
 section .text
 	global ft_write ;
 
 ft_write:
-	xor rdx, rdx ;
-
-.loop:
-	mov al, [rsi + rdx]
-	cmp al, 0
-	je .do_write
-	inc rdx
-	jmp .loop
-
-.do_write:
 	mov rax, 1
-	mov rdi, 1
 	syscall
+
+	cmp rax, 0
+    jge .done
+
+    neg rax
+	push rax
+
+    call __errno_location wrt ..plt
+	pop rcx
+    mov [rax], ecx
+
+    mov rax, -1
+	ret
+
+.done:
 	ret
