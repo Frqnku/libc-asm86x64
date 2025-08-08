@@ -3,7 +3,7 @@ NAME=libasm.a
 SRC_DIR=asm
 OBJ_DIR=obj
 
-SRCS=$(addprefix $(SRC_DIR), /ft_strlen.s /ft_strcpy.s /ft_strcmp.s /ft_write.s /ft_read.s)
+SRCS=$(addprefix $(SRC_DIR), /ft_strlen.s /ft_strcpy.s /ft_strcmp.s /ft_write.s /ft_read.s /ft_strdup.s)
 OBJS=$(patsubst $(SRC_DIR)/%.s, $(OBJ_DIR)/%.o, $(SRCS))
 
 NASM=nasm
